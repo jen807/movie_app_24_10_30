@@ -11,11 +11,11 @@
 
 # 설치항목
 
--[] npmnpm i react-router-dom
--[] npm i styled-components
--[] npm i styled-reset
+-[x] npm i react-router-dom
+-[x] npm i styled-components
+-[x] npm i styled-reset
 -[] swiper
--[] font-awsome
--[] npm i react-hook-form
+-[x] font-awsome
+-[x] npm i react-hook-form
 -[] helmet-async
 -[] react icons
