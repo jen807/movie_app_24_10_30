@@ -19,3 +19,4 @@
 -[x] npm i react-hook-form
 -[] helmet-async
 -[] react icons
+-[] node fetch
