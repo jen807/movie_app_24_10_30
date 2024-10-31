@@ -7,11 +7,15 @@ const Home = () => {
 
   useEffect(() => {
     (async () => {
-      const { results: now } = await nowPlaying();
-      const { results: pop } = await popular();
+      try {
+        const { results: now } = await nowPlaying();
+        const { results: pop } = await popular();
 
-      setNowData(now);
-      setPopData(pop);
+        setNowData(now);
+        setPopData(pop);
+      } catch (error) {
+        console.log(error);
+      }
       // console.log("인기 영화" + pop);
       // console.log("상영 영화" + now);
     })();
