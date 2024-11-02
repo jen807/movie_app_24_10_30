@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
+export const mainStyle = {
+  pcPadding: "10%",
+  moPadding: "20px",
+};
+
 export const GlobalStyled = createGlobalStyle`
 ${reset}
 

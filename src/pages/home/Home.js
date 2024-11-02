@@ -1,11 +1,16 @@
 import { nowPlaying, popular, topRated, upComing } from "../../api";
 import { useEffect, useState } from "react";
+import Loading from "./components/Loading";
+import Banner from "./components/Banner";
+import Movies from "./components/Movies";
+import "swiper/css";
 
 const Home = () => {
   const [nowData, setNowData] = useState();
   const [popData, setPopData] = useState();
   const [topData, setTopData] = useState();
   const [upData, setUpData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -19,12 +24,10 @@ const Home = () => {
         setNowData(now);
         setPopData(pop);
         setTopData(top);
-        
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
-      // console.log("인기 영화" + pop);
-      // console.log("상영 영화" + now);
     })();
   }, []);
 
@@ -32,7 +35,25 @@ const Home = () => {
   console.log(nowData);
   console.log(popData);
   console.log(topData);
-  return <div>Home</div>;
+  return (
+    <div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          {nowData && (
+            <div>
+              <Banner Data={nowData} />
+
+              <Movies data={nowData} title={"현재상영중"}></Movies>
+              <Movies data={popData} title={"현재인기순"}></Movies>
+              <Movies data={topData} title={"현재상영순"}></Movies>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Home;
