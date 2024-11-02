@@ -47,8 +47,9 @@ const Movies = ({ data, title }) => {
     <Container>
       <Title>{title}</Title>
       <Swiper {...params}>
+        {/* =>이부분은 매개변수로 써서 스프레드를 쓴 후 각 키에 맞는 값을 쓸 수 있도록 하는 것인지? */}
         {data.map((movie) => (
-          <SwiperSlide>
+          <SwiperSlide key={movie.id}>
             <Con>
               <Link to={`/detail/${movie.id}`}>
                 <img src={W500 + movie.poster_path} alt={movie.title} />

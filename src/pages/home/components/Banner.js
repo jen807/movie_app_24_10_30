@@ -1,6 +1,7 @@
 import { mainStyle } from "../../../GlobalStyled";
 import styled from "styled-components";
 import { ORIGINAL_URL } from "../../../constant/imgUrl";
+import { useEffect, useState } from "react";
 
 const MainBanner = styled.section`
   height: 80vh;
@@ -49,11 +50,13 @@ const TitleWrap = styled.div`
 `;
 
 const Banner = ({ Data }) => {
+  let randomIndex = Math.floor(Math.random() * Data.length);
+
   return (
-    <MainBanner $coverImg={Data[0]?.backdrop_path}>
+    <MainBanner $coverImg={Data[randomIndex]?.backdrop_path}>
       <TitleWrap>
-        <h3>{Data[0]?.title}</h3>
-        <p>{Data[0]?.overview.slice(0, 100) + "..."}</p>
+        <h3>{Data[randomIndex]?.title}</h3>
+        <p>{Data[randomIndex]?.overview.slice(0, 100) + "..."}</p>
       </TitleWrap>
     </MainBanner>
   );
