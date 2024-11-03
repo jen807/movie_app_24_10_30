@@ -48,6 +48,7 @@ const Home = () => {
               <Movies data={nowData} title={"현재상영중"}></Movies>
               <Movies data={popData} title={"현재인기순"}></Movies>
               <Movies data={topData} title={"현재상영순"}></Movies>
+              <Movies data={upData} title={"개봉예정순"}></Movies>
             </div>
           )}
         </>
