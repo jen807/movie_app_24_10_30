@@ -23,6 +23,9 @@ export const topRated = () =>
 export const upComing = () =>
   fetch(url("movie/upcoming"), options).then((res) => res.json());
 
+export const movieDtail = (id) =>
+  fetch(url(`movie/${id}`), options).then((res) => res.json());
+
 // 프론트엔드의 요청 형식
 
 // 동기화 새로고침해서 받아오기

@@ -27,10 +27,6 @@ img{
 
 a{
     text-decoration: none;
-    color: black;
 }
 
-li,ul{
-    list-style: none;
-}
 `;
