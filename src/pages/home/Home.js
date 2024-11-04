@@ -4,6 +4,8 @@ import Loading from "./components/Loading";
 import Banner from "./components/Banner";
 import Movies from "./components/Movies";
 import "swiper/css";
+import { Helmet } from "react-helmet-async";
+import PageTitle from "../../components/PageTitle";
 
 const Home = () => {
   const [nowData, setNowData] = useState();
@@ -41,7 +43,8 @@ const Home = () => {
         <Loading />
       ) : (
         <>
-          {nowData && (  
+          <PageTitle title="Home" />
+          {nowData && (
             <div>
               <Banner Data={nowData} />
 

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { mainStyle } from "../../GlobalStyled";
 import Loading from "../home/components/Loading";
 import { ORIGINAL_URL } from "../../constant/imgUrl";
+import PageTitle from "../../components/PageTitle";
 
 const Container = styled.section`
   padding: 150px ${mainStyle.pcPadding};
@@ -72,25 +73,28 @@ const Detail = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <Container>
-          <Bg
-            style={{
-              background: `url(${ORIGINAL_URL}${data.poster_path}) no-repeat center / cover`,
-            }}
-          />
-          <TitleWrap>
-            <h3>{data.title}</h3>
-            <span>{Math.round(data.vote_average)}점</span> ·
-            <span>{data.runtime}분</span> ·{" "}
-            <span>개봉 {data.release_date}</span>
-            <ul>
-              {data.genres.map((genre) => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
-            </ul>
-            <p>{data.overview}</p>
-          </TitleWrap>
-        </Container>
+        <>
+          <PageTitle title={data.title} />
+          <Container>
+            <Bg
+              style={{
+                background: `url(${ORIGINAL_URL}${data.poster_path}) no-repeat center / cover`,
+              }}
+            />
+            <TitleWrap>
+              <h3>{data.title}</h3>
+              <span>{Math.round(data.vote_average)}점</span> ·
+              <span>{data.runtime}분</span> ·{" "}
+              <span>개봉 {data.release_date}</span>
+              <ul>
+                {data.genres.map((genre) => (
+                  <li key={genre.id}>{genre.name}</li>
+                ))}
+              </ul>
+              <p>{data.overview}</p>
+            </TitleWrap>
+          </Container>
+        </>
       )}
     </>
   );

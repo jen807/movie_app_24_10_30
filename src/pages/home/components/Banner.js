@@ -1,7 +1,6 @@
 import { mainStyle } from "../../../GlobalStyled";
 import styled from "styled-components";
 import { ORIGINAL_URL } from "../../../constant/imgUrl";
-import { useEffect, useState } from "react";
 
 const MainBanner = styled.section`
   height: 80vh;
