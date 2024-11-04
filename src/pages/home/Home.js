@@ -41,7 +41,7 @@ const Home = () => {
         <Loading />
       ) : (
         <>
-          {nowData && (
+          {nowData && (  
             <div>
               <Banner Data={nowData} />
 
