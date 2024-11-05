@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { movieDtail } from "../../api";
 import styled from "styled-components";
-import { mainStyle } from "../../GlobalStyled";
+// import { mainStyle } from "../../GlobalStyled";
 import Loading from "../home/components/Loading";
-import { ORIGINAL_URL } from "../../constant/imgUrl";
+import { NO_IMG, ORIGINAL_URL } from "../../constant/imgUrl";
 import PageTitle from "../../components/PageTitle";
+import Wrapper from "../../components/Wrapper";
+import useScrollTop from "../../lib/useScrollTop";
 
-const Container = styled.section`
-  padding: 150px ${mainStyle.pcPadding};
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 const Bg = styled.div`
   width: 45%;
   height: 800px;
@@ -54,6 +56,7 @@ const Detail = () => {
   const { id } = useParams();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  useScrollTop();
 
   useEffect(() => {
     (async () => {
@@ -75,25 +78,33 @@ const Detail = () => {
       ) : (
         <>
           <PageTitle title={data.title} />
-          <Container>
-            <Bg
-              style={{
-                background: `url(${ORIGINAL_URL}${data.poster_path}) no-repeat center / cover`,
-              }}
-            />
-            <TitleWrap>
-              <h3>{data.title}</h3>
-              <span>{Math.round(data.vote_average)}점</span> ·
-              <span>{data.runtime}분</span> ·{" "}
-              <span>개봉 {data.release_date}</span>
-              <ul>
-                {data.genres.map((genre) => (
-                  <li key={genre.id}>{genre.name}</li>
-                ))}
-              </ul>
-              <p>{data.overview}</p>
-            </TitleWrap>
-          </Container>
+          <Wrapper>
+            <Container>
+              <Bg
+                style={{
+                  // background: `${data.poster_path}`
+                  //   ? `url(${ORIGINAL_URL}${data.poster_path}) no-repeat center / cover`
+                  //   : `url(${NO_IMG}) no-repeat center / cover`,
+
+                  background: `url(${
+                    data.poster_path ? ORIGINAL_URL + data.poster_path : NO_IMG
+                  }) no-repeat center / cover`,
+                }}
+              />
+              <TitleWrap>
+                <h3>{data.title}</h3>
+                <span>{Math.round(data.vote_average)}점</span> ·
+                <span>{data.runtime}분</span> ·{" "}
+                <span>개봉 {data.release_date}</span>
+                <ul>
+                  {data.genres.map((genre) => (
+                    <li key={genre.id}>{genre.name}</li>
+                  ))}
+                </ul>
+                <p>{data.overview}</p>
+              </TitleWrap>
+            </Container>
+          </Wrapper>
         </>
       )}
     </>

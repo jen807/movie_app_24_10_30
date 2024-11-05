@@ -6,7 +6,7 @@ const options = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzkyMzFlYTY4ZTE3YzE5OWNiZDVlM2Q2YjY0MTAxOCIsIm5iZiI6MTczMDI2NjE3My43MDk4OTY2LCJzdWIiOiI2NzIxYjQ0Zjk3NGE2NzZjNmRmMzNiNmQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Fn5Fm_SCcxrcdlqcuHe8TC4-AdoNQwaFCX5mVzZEL60",
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMzkyMzFlYTY4ZTE3YzE5OWNiZDVlM2Q2YjY0MTAxOCIsIm5iZiI6MTczMDc4NTQwNy40OTc5NzM3LCJzdWIiOiI2NzIxYjQ0Zjk3NGE2NzZjNmRmMzNiNmQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.4QCA62MxVK47KS28YyxRhZr7fNnowXDhm7hwbq1T108",
   },
 };
 
@@ -25,6 +25,12 @@ export const upComing = () =>
 
 export const movieDtail = (id) =>
   fetch(url(`movie/${id}`), options).then((res) => res.json());
+
+export const searchMovie = (keyword) => {
+  const searchUrl =
+    baseUrl + `search/movie?query=${keyword}&include_adult=true&language=ko-kr`;
+  return fetch(searchUrl, options).then((res) => res.json());
+};
 
 // 프론트엔드의 요청 형식
 
