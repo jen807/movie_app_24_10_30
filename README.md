@@ -1,4 +1,5 @@
 # Work List
+
 - [x] Router 설정
 - [x] 각 폴더, 파일 등 구성
 - [x] api 설정
@@ -11,10 +12,10 @@
 
 # 설치항목
 
--[x] npm i react-router-dom
--[x] npm i styled-components
--[x] npm i styled-reset
--[x] swiper
--[x] font-awsome
--[x] npm i react-hook-form
--[x] helmet-async
+- [x] npm i react-router-dom
+- [x] npm i styled-components
+- [x] npm i styled-reset
+- [x] swiper
+- [x] font-awsome
+- [x] npm i react-hook-form
+- [x] helmet-async
